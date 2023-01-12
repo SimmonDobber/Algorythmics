@@ -54,12 +54,12 @@ struct mint {
 	}
 	
 	mint(long long num, int mod) {
-		this->modulo = modulo;
+		this->modulo = mod;
 		this->number = num % mod;
 	}
 	
 	mint(mint& num, int mod) {
-		this->modulo = modulo;
+		this->modulo = mod;
 		this->number = num.number % mod;
 	}
 	
