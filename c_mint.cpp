@@ -1195,4 +1195,5 @@ int main() {
 	allPassed &= lesserOrEqualOperatorTests();
 	allPassed &= arrayOperatorTests();
 	cout<<"-------------------------------------------\n"<<((allPassed) ? "ALL TESTS PASSED!" : "TESTS FAILED!")<<nl;
+	return 0;
 }
