@@ -72,7 +72,7 @@ struct mint {
 	}
 	
 	int fastPower(int base, int power) {
-		if(power== 0) {
+		if(power == 0) {
 			return 1;
 		} else if((power & 1) == 0) {
 			int tmp = fastPower(base, (power >> 1)) % modulo;
