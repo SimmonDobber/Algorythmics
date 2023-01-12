@@ -714,7 +714,7 @@ bool equalOperatorTests() {
 		mint incorrectLongLongMint = longLong + 1;
 		mint incorrectModularMint = modular + 1;
 		//then
-		if(correctIntegerMint.number != integer) {
+		if(correctIntegerMint != integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -722,7 +722,7 @@ bool equalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number != longLong % M) {
+		if(correctLongLongMint != longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -730,7 +730,7 @@ bool equalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number != modular.number) {
+		if(correctModularMint != modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -738,7 +738,7 @@ bool equalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number == integer) {
+		if(incorrectIntegerMint == integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -746,7 +746,7 @@ bool equalOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number == longLong % M) {
+		if(incorrectLongLongMint == longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -754,7 +754,7 @@ bool equalOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number == modular.number) {
+		if(incorrectModularMint == modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -780,7 +780,7 @@ bool unequalOperatorTests() {
 		mint incorrectLongLongMint = longLong;
 		mint incorrectModularMint = modular;
 		//then
-		if(correctIntegerMint.number == integer) {
+		if(correctIntegerMint == integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -788,7 +788,7 @@ bool unequalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number == longLong % M) {
+		if(correctLongLongMint == longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -796,7 +796,7 @@ bool unequalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number == modular.number) {
+		if(correctModularMint == modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -804,7 +804,7 @@ bool unequalOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number != integer) {
+		if(incorrectIntegerMint != integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -812,7 +812,7 @@ bool unequalOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number != longLong % M) {
+		if(incorrectLongLongMint != longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -820,7 +820,7 @@ bool unequalOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number != modular.number) {
+		if(incorrectModularMint != modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -851,7 +851,7 @@ bool greaterOperatorTests() {
 			incorrectModularMint = modular.number;
 		}
 		//then
-		if(correctIntegerMint.number <= integer) {
+		if(correctIntegerMint <= integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -859,7 +859,7 @@ bool greaterOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number <= longLong % M) {
+		if(correctLongLongMint <= longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -867,7 +867,7 @@ bool greaterOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number <= modular.number) {
+		if(correctModularMint <= modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -875,7 +875,7 @@ bool greaterOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number > integer) {
+		if(incorrectIntegerMint > integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -883,7 +883,7 @@ bool greaterOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number > longLong % M) {
+		if(incorrectLongLongMint > longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -891,7 +891,7 @@ bool greaterOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number > modular.number) {
+		if(incorrectModularMint > modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -922,7 +922,7 @@ bool greaterOrEqualOperatorTests() {
 			correctModularMint = modular.number;
 		}
 		//then
-		if(correctIntegerMint.number < integer) {
+		if(correctIntegerMint < integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -930,7 +930,7 @@ bool greaterOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number < longLong % M) {
+		if(correctLongLongMint < longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -938,7 +938,7 @@ bool greaterOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number < modular.number) {
+		if(correctModularMint < modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -946,7 +946,7 @@ bool greaterOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number >= integer) {
+		if(incorrectIntegerMint >= integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -954,7 +954,7 @@ bool greaterOrEqualOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number >= longLong % M) {
+		if(incorrectLongLongMint >= longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -962,7 +962,7 @@ bool greaterOrEqualOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number >= modular.number) {
+		if(incorrectModularMint >= modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -993,7 +993,7 @@ bool lesserOperatorTests() {
 			incorrectModularMint = modular.number;
 		}
 		//then
-		if(correctIntegerMint.number >= integer) {
+		if(correctIntegerMint >= integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -1001,7 +1001,7 @@ bool lesserOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number >= longLong % M) {
+		if(correctLongLongMint >= longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -1009,7 +1009,7 @@ bool lesserOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number >= modular.number) {
+		if(correctModularMint >= modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -1017,7 +1017,7 @@ bool lesserOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number < integer) {
+		if(incorrectIntegerMint < integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -1025,7 +1025,7 @@ bool lesserOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number < longLong % M) {
+		if(incorrectLongLongMint < longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -1033,7 +1033,7 @@ bool lesserOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number < modular.number) {
+		if(incorrectModularMint < modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -1064,7 +1064,7 @@ bool lesserOrEqualOperatorTests() {
 			correctModularMint = modular.number;
 		}
 		//then
-		if(correctIntegerMint.number > integer) {
+		if(correctIntegerMint > integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctIntegerMint: "<<correctIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -1072,7 +1072,7 @@ bool lesserOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctLongLongMint.number > longLong % M) {
+		if(correctLongLongMint > longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctLongLongMint: "<<correctLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -1080,7 +1080,7 @@ bool lesserOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(correctModularMint.number > modular.number) {
+		if(correctModularMint > modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"correctModularMint: "<<correctModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
@@ -1088,7 +1088,7 @@ bool lesserOrEqualOperatorTests() {
 			cout<<"should equal: TRUE"<<nl;
 			return false;
 		}
-		if(incorrectIntegerMint.number <= integer) {
+		if(incorrectIntegerMint <= integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectIntegerMint: "<<incorrectIntegerMint.number<<nl;
 			cout<<"integer: "<<integer<<nl;
@@ -1096,7 +1096,7 @@ bool lesserOrEqualOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectLongLongMint.number <= longLong % M) {
+		if(incorrectLongLongMint <= longLong % M) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectLongLongMint: "<<incorrectLongLongMint.number<<nl;
 			cout<<"longLong: "<<longLong % M<<nl;
@@ -1104,7 +1104,7 @@ bool lesserOrEqualOperatorTests() {
 			cout<<"should equal: FALSE"<<nl;
 			return false;
 		}
-		if(incorrectModularMint.number <= modular.number) {
+		if(incorrectModularMint <= modular) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
 			cout<<"incorrectModularMint: "<<incorrectModularMint.number<<nl;
 			cout<<"modular: "<<modular.number<<nl;
