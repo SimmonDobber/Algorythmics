@@ -83,7 +83,7 @@ struct mint {
 	}
 	
 	int fastInverse(int num) {
-		return fastPower(num % modulo, M - 2) % modulo;
+		return fastPower(num % modulo, modulo - 2) % modulo;
 	}
 	
 	void operator=(const mint& num)       { number = num.number % modulo; }
