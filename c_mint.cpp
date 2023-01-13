@@ -122,13 +122,14 @@ struct mint {
 	mint operator/=(const int& num)       { return ((*this).number = (number * (long long)(fastInverse(num % modulo))) % modulo); }
 	mint operator/=(const long long& num) { return ((*this).number = (number * (long long)(fastInverse(num % modulo))) % modulo); }
 	
-	int operator%(const mint& num)        { return number % num.number; }
 	int operator%(const int& num)         { return number % num; }
-	int operator%(const long long& num)   { return number % num; }
-	
-	mint operator%=(const mint& num)      { return ((*this).number = number % num.number); }
 	mint operator%=(const int& num)       { return ((*this).number = number % num); }
-	mint operator%=(const long long& num) { return ((*this).number = number % num); }
+	
+	int operator<<(const int& num)         { return (number << (num % modulo)) % modulo; }
+	mint operator<<=(const int& num)       { return ((*this).number = (number << (num % modulo)) % modulo); }
+	
+	int operator>>(const int& num)         { return (number >> (num % modulo)) % modulo; }
+	mint operator>>=(const int& num)       { return ((*this).number = (number >> (num % modulo)) % modulo); }
 	
 	bool operator==(const mint& num)      { return number == (num.number % modulo); }
 	bool operator==(const int& num)       { return number == (num % modulo); }
@@ -634,19 +635,11 @@ bool modulationOperatorTests() {
 	f(i, NUMBER_OF_TESTS) {
 		//given
 		int integer = rnd() % INF;
-		long long longLong = rnd() % LINF;
-		mint modular = rnd() % INF;
 		mint modularBase = rnd() % INF;
 		//when
 		mint integerMint = modularBase % integer;
-		mint longLongMint = modularBase % longLong;
-		mint modularMint = modularBase % modular;
 		mint integerMintBase = modularBase;
-		mint longLongMintBase = modularBase;
-		mint modularMintBase = modularBase;
 		integerMintBase %= integer;
-		longLongMintBase %= longLong;
-		modularMintBase %= modular;
 		//then
 		if(integerMint != modularBase.number % integer) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
@@ -654,22 +647,6 @@ bool modulationOperatorTests() {
 			cout<<"integer: "<<integer<<nl;
 			cout<<"result equals: "<<integerMint.number<<nl;
 			cout<<"should equal: "<<modularBase.number % integer<<nl;
-			return false;
-		}
-		if(longLongMint != modularBase.number % longLong) {
-			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
-			cout<<"modularBase: "<<modularBase.number<<nl;
-			cout<<"longLong: "<<longLong<<nl;
-			cout<<"result equals: "<<longLongMint.number<<nl;
-			cout<<"should equal: "<<modularBase.number % longLong<<nl;
-			return false;
-		}
-		if(modularMint.number != modularBase.number % modular.number) {
-			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
-			cout<<"modularBase: "<<modularBase.number<<nl;
-			cout<<"modular: "<<modular.number<<nl;
-			cout<<"result equals: "<<modularMint.number<<nl;
-			cout<<"should equal: "<<modularBase.number % modular.number<<nl;
 			return false;
 		}
 		if(integerMintBase.number != modularBase.number % integer) {
@@ -680,24 +657,70 @@ bool modulationOperatorTests() {
 			cout<<"should equal: "<<modularBase.number % integer<<nl;
 			return false;
 		}
-		if(longLongMintBase != modularBase.number % longLong) {
+	}
+	cout<<"[MODULATION TESTS PASSED!]"<<nl;
+	return true;
+}
+
+bool leftShiftOperatorTests() {
+	f(i, NUMBER_OF_TESTS) {
+		//given
+		int shift = rnd() % 16;
+		mint base = rnd() % (1 << 14);
+		//when
+		mint shiftMint = base << shift;
+		mint shiftMintBase = base;
+		shiftMintBase <<= shift;
+		//then
+		if(shiftMint.number != base.number << shift) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
-			cout<<"modularMintBase: "<<modularBase.number<<nl;
-			cout<<"longLong: "<<longLong<<nl;
-			cout<<"result equals: "<<longLongMintBase.number<<nl;
-			cout<<"should equal: "<<modularBase.number % longLong<<nl;
+			cout<<"base: "<<base.number<<nl;
+			cout<<"shift: "<<shift<<nl;
+			cout<<"result equals: "<<shiftMint.number<<nl;
+			cout<<"should equal: "<<(base.number << shift)<<nl;
 			return false;
 		}
-		if(modularMintBase.number != modularBase.number % modular.number) {
+		if(shiftMintBase.number != base.number << shift) {
 			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
-			cout<<"modularBase: "<<modularBase.number<<nl;
-			cout<<"modular: "<<modular.number<<nl;
-			cout<<"result equals: "<<modularMintBase.number<<nl;
-			cout<<"should equal: "<<modularBase.number % modular.number<<nl;
+			cout<<"base: "<<base.number<<nl;
+			cout<<"shift: "<<shift<<nl;
+			cout<<"result equals: "<<shiftMintBase.number<<nl;
+			cout<<"should equal: "<<(base.number << shift)<<nl;
 			return false;
 		}
 	}
-	cout<<"[MODULATION TESTS PASSED!]"<<nl;
+	cout<<"[LEFT SHIFT TESTS PASSED!]"<<nl;
+	return true;
+}
+
+bool rightShiftOperatorTests() {
+	f(i, NUMBER_OF_TESTS) {
+		//given
+		int shift = rnd() % 16;
+		mint base = 16 + rnd() % (1 << 14);
+		//when
+		mint shiftMint = base >> shift;
+		mint shiftMintBase = base;
+		shiftMintBase >>= shift;
+		//then
+		if(shiftMint.number != base.number >> shift) {
+			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
+			cout<<"base: "<<base.number<<nl;
+			cout<<"shift: "<<shift<<nl;
+			cout<<"result equals: "<<shiftMint.number<<nl;
+			cout<<"should equal: "<<(base.number >> shift)<<nl;
+			return false;
+		}
+		if(shiftMintBase.number != base.number >> shift) {
+			cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
+			cout<<"base: "<<base.number<<nl;
+			cout<<"shift: "<<shift<<nl;
+			cout<<"result equals: "<<shiftMintBase.number<<nl;
+			cout<<"should equal: "<<(base.number >> shift)<<nl;
+			return false;
+		}
+	}
+	cout<<"[RIGHT SHIFT TESTS PASSED!]"<<nl;
 	return true;
 }
 
@@ -1129,9 +1152,9 @@ bool arrayOperatorTests() {
 		modularArray[0] = modular1;
 		modularArray[1] = modular2;
 		modularArray[2] = modular3;
-		f(i, 3) {
-			f(j, 3) {
-				multidimensionalModularArray[i][j] = modularArray[j];
+		f(j, 3) {
+			f(k, 3) {
+				multidimensionalModularArray[j][k] = modularArray[k];
 			}
 		}
 		//then
@@ -1159,14 +1182,14 @@ bool arrayOperatorTests() {
 			cout<<"should equal: "<<modular3<<nl;
 			return false;
 		}
-		f(i, 3) {
-			f(j, 3) {
-				if(multidimensionalModularArray[i][j] != modularArray[j]) {
+		f(j, 3) {
+			f(k, 3) {
+				if(multidimensionalModularArray[j][k] != modularArray[k]) {
 					cout<<"[TESTS FAILED on test "<<i + 1<<"!]"<<nl;
-					cout<<"multidimensionalModularArray["<<i<<"]["<<j<<"]: "<<multidimensionalModularArray[i][j].number<<nl;
-					cout<<"modularArray["<<j<<"]: "<<modularArray[j].number<<nl;
-					cout<<"result equals: "<<multidimensionalModularArray[i][j].number<<nl;
-					cout<<"should equal: "<<modularArray[j].number<<nl;
+					cout<<"multidimensionalModularArray["<<j<<"]["<<k<<"]: "<<multidimensionalModularArray[j][k].number<<nl;
+					cout<<"modularArray["<<k<<"]: "<<modularArray[k].number<<nl;
+					cout<<"result equals: "<<multidimensionalModularArray[j][k].number<<nl;
+					cout<<"should equal: "<<modularArray[k].number<<nl;
 					return false;
 				}
 			}
@@ -1187,6 +1210,8 @@ int main() {
 	allPassed &= multiplicationOperatorTests();
 	allPassed &= divisionOperatorTests();
 	allPassed &= modulationOperatorTests();
+	allPassed &= leftShiftOperatorTests();
+	allPassed &= rightShiftOperatorTests();
 	allPassed &= equalOperatorTests();
 	allPassed &= unequalOperatorTests();
 	allPassed &= greaterOperatorTests();
