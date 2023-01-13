@@ -86,49 +86,49 @@ struct mint {
 		return fastPower(num % modulo, modulo - 2) % modulo;
 	}
 	
-	void operator=(const mint& num)       { number = num.number % modulo; }
-	void operator=(const int& num)        { number = num % modulo; }
-	void operator=(const long long& num)  { number = num % modulo; }
+	mint operator=(const mint& num)       { return ((*this).number = num.number % modulo); }
+	mint operator=(const int& num)        { return ((*this).number = num % modulo); }
+	mint operator=(const long long& num)  { return ((*this).number = num % modulo); }
 	
 	int operator+(const mint& num)        { return (number + (num.number % modulo)) % modulo; }
 	int operator+(const int& num)         { return (number + (num % modulo)) % modulo; }
 	int operator+(const long long& num)   { return (number + (num % modulo)) % modulo; }
 	
-	void operator+=(const mint& num)      { number = (number + (num.number % modulo)) % modulo; }
-	void operator+=(const int& num)       { number = (number + (num % modulo)) % modulo; }
-	void operator+=(const long long& num) { number = (number + (num % modulo)) % modulo; }
+	mint operator+=(const mint& num)      { return ((*this).number = (number + (num.number % modulo)) % modulo); }
+	mint operator+=(const int& num)       { return ((*this).number = (number + (num % modulo)) % modulo); }
+	mint operator+=(const long long& num) { return ((*this).number = (number + (num % modulo)) % modulo); }
 	
 	int operator-(const mint& num)        { return (number - (num.number % modulo) + modulo) % modulo; }
 	int operator-(const int& num)         { return (number - (num % modulo) + modulo) % modulo; }
 	int operator-(const long long& num)   { return (number - (num % modulo) + modulo) % modulo; }
 	
-	void operator-=(const mint& num)      { number = (number - (num.number % modulo) + modulo) % modulo; }
-	void operator-=(const int& num)       { number = (number - (num % modulo) + modulo) % modulo; }
-	void operator-=(const long long& num) { number = (number - (num % modulo) + modulo) % modulo; }
+	mint operator-=(const mint& num)      { return ((*this).number = (number - (num.number % modulo) + modulo) % modulo); }
+	mint operator-=(const int& num)       { return ((*this).number = (number - (num % modulo) + modulo) % modulo); }
+	mint operator-=(const long long& num) { return ((*this).number = (number - (num % modulo) + modulo) % modulo); }
 	
 	int operator*(const mint& num)        { return (number * (long long)(num.number % modulo)) % modulo; }
 	int operator*(const int& num)         { return (number * (long long)(num % modulo)) % modulo; }
 	int operator*(const long long& num)   { return (number * (long long)(num % modulo)) % modulo; }
 	
-	void operator*=(const mint& num)      { number = (number * (long long)(num.number % modulo)) % modulo; }
-	void operator*=(const int& num)       { number = (number * (long long)(num % modulo)) % modulo; }
-	void operator*=(const long long& num) { number = (number * (long long)(num % modulo)) % modulo; }
+	mint operator*=(const mint& num)      { return ((*this).number = (number * (long long)(num.number % modulo)) % modulo); }
+	mint operator*=(const int& num)       { return ((*this).number = (number * (long long)(num % modulo)) % modulo); }
+	mint operator*=(const long long& num) { return ((*this).number = (number * (long long)(num % modulo)) % modulo); }
 	
 	int operator/(const mint& num)        { return (number * (long long)(fastInverse(num.number % modulo))) % modulo; }
 	int operator/(const int& num)         { return (number * (long long)(fastInverse(num % modulo))) % modulo; }
 	int operator/(const long long& num)   { return (number * (long long)(fastInverse(num % modulo))) % modulo; }
 	
-	void operator/=(const mint& num)      { number = (number * (long long)(fastInverse(num.number % modulo))) % modulo; }
-	void operator/=(const int& num)       { number = (number * (long long)(fastInverse(num % modulo))) % modulo; }
-	void operator/=(const long long& num) { number = (number * (long long)(fastInverse(num % modulo))) % modulo; }
+	mint operator/=(const mint& num)      { return ((*this).number = (number * (long long)(fastInverse(num.number % modulo))) % modulo); }
+	mint operator/=(const int& num)       { return ((*this).number = (number * (long long)(fastInverse(num % modulo))) % modulo); }
+	mint operator/=(const long long& num) { return ((*this).number = (number * (long long)(fastInverse(num % modulo))) % modulo); }
 	
 	int operator%(const mint& num)        { return number % num.number; }
 	int operator%(const int& num)         { return number % num; }
 	int operator%(const long long& num)   { return number % num; }
 	
-	void operator%=(const mint& num)      { number = number % num.number; }
-	void operator%=(const int& num)       { number = number % num; }
-	void operator%=(const long long& num) { number = number % num; }
+	mint operator%=(const mint& num)      { return ((*this).number = number % num.number); }
+	mint operator%=(const int& num)       { return ((*this).number = number % num); }
+	mint operator%=(const long long& num) { return ((*this).number = number % num); }
 	
 	bool operator==(const mint& num)      { return number == (num.number % modulo); }
 	bool operator==(const int& num)       { return number == (num % modulo); }
