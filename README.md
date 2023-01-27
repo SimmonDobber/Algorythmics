@@ -7,5 +7,6 @@
 * c_dsu.cpp - Template featuring disjoint set union data structure which allows for merging sets of values and asking for given set's representant in         almost constant time (fully tested).
 * c_sparse.cpp - Template featuring sparse table data structure which allows to perform segment queries on immutable array using any associative function     in logarithmic time (even constant if function is idempotent) (fully tested).
 * c_fenwick.cpp - Template featuring fenwick tree data structure which allows to ask for prefix sums on array, aswell as updating single elements in         logarithmic time (fully tested).
+* c_segtree.cpp - Template featuring (seg - seg) segment tree which allows for custom segment updates and queries, that may be determineg by three           customable functions (propagateNodeValue, propagateValueToProcess and calculate) (fully tested).
 
 (All templates do not free memory due to contests' strict time limits)
