@@ -33,23 +33,23 @@ using gr=vector<vector<int> >;
 
 mt19937 rnd(chrono::high_resolution_clock::now().time_since_epoch().count());
 
-struct Fenwick {
+template <typename T> struct Fenwick {
 	
 	int n;
-	int* array;
+	T* array;
 	
 	Fenwick(){}
 	
 	Fenwick(int newN){
 		this->n = newN + 1;
-		array = new int[n];
+		array = new T[n];
 		f(i, n) {
 			array[i] = 0;
 		}
 	}
 	
-	int prefSum(int index) {
-		int sum = 0;
+	T prefSum(int index) {
+		T sum = 0;
 		index++;
 		while(index > 0) {
 			sum += array[index];
@@ -64,7 +64,7 @@ struct Fenwick {
 		return rSum - lSum;
 	}
 	
-	void update(int index, int value) {
+	void update(int index, T value) {
 		index++;
 		while(index < n) {
 			array[index] += value;
@@ -82,7 +82,7 @@ void tests() {
 	f(i, N) {
 		array[i] = 0;
 	}
-	Fenwick f = Fenwick(N);
+	Fenwick<int> f = Fenwick<int>(N);
 	//when
 	f(i, NUMBER_OF_TESTS) {
 		int index = rnd() % N;

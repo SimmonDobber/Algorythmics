@@ -50,7 +50,7 @@ struct Utils {
 		return number;
 	}
 	
-	string intToString(int number) {
+	string intToString(ll number) {
 		bool sign = false;
 		string str = "";
 		if(number == 0) {
@@ -71,7 +71,7 @@ struct Utils {
 		return str;
 	}
 	
-	int sumOfDigits(int number) {
+	int sumOfDigits(ll number) {
 		int sum = 0;
 		while(number > 0) {
 			sum += number % 10;
@@ -80,7 +80,7 @@ struct Utils {
 		return sum;
 	}
 	
-	int numberOfDigits(int number) {
+	int numberOfDigits(ll number) {
 		int digitsNumber = 0;
 		if(number == 0) {
 			return 1;

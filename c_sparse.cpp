@@ -33,37 +33,37 @@ using gr=vector<vector<int> >;
 
 mt19937 rnd(chrono::high_resolution_clock::now().time_since_epoch().count());
 
-struct Sparse {
+template <typename T> struct Sparse {
 	
 	int n;
 	int k;
-	function<int(int, int)> associativeFunction;
-	int neutralElement;
-	int** table;
+	function<T(int, int)> associativeFunction;
+	T neutralElement;
+	T** table;
 	
 	Sparse() {}
 	
-	Sparse(int newN, int* array, function<int(int, int)> f) {
+	Sparse(int newN, T* array, function<T(int, int)> f) {
 		this->n = newN;
 		this->k = 32 - __builtin_clz(n);
 		this->associativeFunction = f;
 		this->neutralElement = 0;
-		this->table = new int*[k];
+		this->table = new T*[k];
 		build(array);
 	}
 	
-	Sparse(int newN, int* array, function<int(int, int)> f, int neutral) {
+	Sparse(int newN, T* array, function<T(int, int)> f, T neutral) {
 		this->n = newN;
 		this->k = 32 - __builtin_clz(n);
 		this->associativeFunction = f;
 		this->neutralElement = neutral;
-		this->table = new int*[k];
+		this->table = new T*[k];
 		build(array);
 	}
 	
-	void build(int* array) {
+	void build(T* array) {
 		f(i, k) {
-			table[i] = new int[n];
+			table[i] = new T[n];
 			f(j, n) {
 				table[i][j] = 0;
 			}
@@ -78,8 +78,8 @@ struct Sparse {
 		}
 	}
 	
-	int query(int l, int r) {
-		int answer = neutralElement;
+	T query(int l, int r) {
+		T answer = neutralElement;
 		fn(i, k) {
 			if((1 << i) <= r - l + 1) {
 				answer = associativeFunction(answer, table[i][l]);
@@ -89,7 +89,7 @@ struct Sparse {
 		return answer;
 	}
 	
-	int idempotentQuery(int l, int r) {
+	T idempotentQuery(int l, int r) {
 		int i =  31 - __builtin_clz(r - l + 1);
 		return associativeFunction(table[i][l], table[i][r - (1 << i) + 1]);
 	}
@@ -112,7 +112,7 @@ bool queryTests() {
 	f(i, N) {
 		array[i] = rnd() % N;
 	}
-	Sparse sparse = Sparse(N, array, sum);
+	Sparse<int> sparse = Sparse<int>(N, array, sum);
 	f(i, NUMBER_OF_TESTS) {
 		//when
 		int l = rnd() % N;
@@ -145,7 +145,7 @@ bool idempotentQueryTests() {
 	f(i, N) {
 		array[i] = rnd() % N;
 	}
-	Sparse sparse = Sparse(N, array, mi);
+	Sparse<int> sparse = Sparse<int>(N, array, mi);
 	f(i, NUMBER_OF_TESTS) {
 		//when
 		int l = rnd() % N;
